@@ -1,0 +1,17 @@
+version: "3.9"
+
+networks:
+  m1-local-network:
+    name: m1-local-network
+
+services:
+  postgres:
+    image: postgres:13.6-alpine3.15
+    user: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - m1-local-network

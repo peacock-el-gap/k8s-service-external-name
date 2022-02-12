@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: external-postgres
+  namespace: camunda
+spec:
+  type: ExternalName
+  # In this example we are using https://sslip.io/ service.
+  # 192.168.88.64 is IP of my machine-1 (where PostgreSQL is installed) in my local network.
+  # Adjust this value to reflect your particular configuration.
+  # Note, that you can't use pure IP address here, it will not work.
+  externalName: 192-168-88-64.sslip.io

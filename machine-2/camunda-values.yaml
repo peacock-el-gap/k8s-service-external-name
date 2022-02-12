@@ -1,0 +1,25 @@
+general:
+  replicaCount: 1
+
+database:
+  driver: org.postgresql.Driver
+
+  # Indirect URL, going through service with type: ExternalName
+  # This service is defined in postgres-external-name.yaml file
+  url: jdbc:postgresql://external-postgres:5432/postgres
+
+  # Direct URL, pointing to external IP
+  # 192.168.88.64 is IP of my machine-1 (where PostgreSQL is installed) in my local network.
+  # Adjust this value to reflect your particular configuration.
+  # url: jdbc:postgresql://192.168.88.64:5432/postgres
+
+  # Direct URL, pointing to external name
+  # In this example we are using https://sslip.io/ service
+  # 192.168.88.64 is IP of my machine-1 (where PostgreSQL is installed) in my local network.
+  # Adjust this value to reflect your particular configuration.
+  # url: jdbc:postgresql://192-168-88-64.sslip.io:5432/postgres
+
+  credentialsSecretName: camunda-bpm-platform-postgresql-credentials
+  credentialsSecretKeys:
+    username: DB_USERNAME
+    password: DB_PASSWORD
